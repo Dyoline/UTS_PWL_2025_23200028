@@ -7,21 +7,23 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const { order_date, order_by, selected_package, qty, is_paid } = await request.json();
-  if (!order_date || !order_by || !selected_package || !qty || !is_paid) {
+  const { order_date, order_by, selected_package, qty, status } =
+    await request.json();
+  if (!order_date || !order_by || !selected_package || !qty || !status) {
     return new Response(JSON.stringify({ error: 'Semua field wajib diisi' }), {
       status: 400,
     });
   }
   const preorder = await prisma.preorder.create({
-    data: { order_date, order_by, selected_package, qty, is_paid },
+    data: { order_date, order_by, selected_package, qty, status },
   });
   return new Response(JSON.stringify(preorder), { status: 201 });
 }
 
 export async function PUT(request) {
-  const { id, order_date, order_by, selected_package, qty, is_paid } = await request.json();
-  if (!id || !order_date || !order_by || !selected_package || !qty || !is_paid)
+  const { id, order_date, order_by, selected_package, qty, status } =
+    await request.json();
+  if (!id || !order_date || !order_by || !selected_package || !qty || !status)
     return Response.json(
       { error: 'Field kosong' },
       {
@@ -30,7 +32,7 @@ export async function PUT(request) {
     );
   const preorder = await prisma.preorder.update({
     where: { id },
-    data: { order_date, order_by, selected_package, qty, is_paid },
+    data: { order_date, order_by, selected_package, qty, status },
   });
   return Response.json(preorder);
 }
