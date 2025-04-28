@@ -897,7 +897,7 @@ export namespace Prisma {
     order_by: string | null
     selected_package: string | null
     qty: number | null
-    is_paid: boolean | null
+    status: boolean | null
   }
 
   export type PreorderMaxAggregateOutputType = {
@@ -906,7 +906,7 @@ export namespace Prisma {
     order_by: string | null
     selected_package: string | null
     qty: number | null
-    is_paid: boolean | null
+    status: boolean | null
   }
 
   export type PreorderCountAggregateOutputType = {
@@ -915,7 +915,7 @@ export namespace Prisma {
     order_by: number
     selected_package: number
     qty: number
-    is_paid: number
+    status: number
     _all: number
   }
 
@@ -936,7 +936,7 @@ export namespace Prisma {
     order_by?: true
     selected_package?: true
     qty?: true
-    is_paid?: true
+    status?: true
   }
 
   export type PreorderMaxAggregateInputType = {
@@ -945,7 +945,7 @@ export namespace Prisma {
     order_by?: true
     selected_package?: true
     qty?: true
-    is_paid?: true
+    status?: true
   }
 
   export type PreorderCountAggregateInputType = {
@@ -954,7 +954,7 @@ export namespace Prisma {
     order_by?: true
     selected_package?: true
     qty?: true
-    is_paid?: true
+    status?: true
     _all?: true
   }
 
@@ -1050,7 +1050,7 @@ export namespace Prisma {
     order_by: string
     selected_package: string
     qty: number
-    is_paid: boolean
+    status: boolean
     _count: PreorderCountAggregateOutputType | null
     _avg: PreorderAvgAggregateOutputType | null
     _sum: PreorderSumAggregateOutputType | null
@@ -1078,7 +1078,7 @@ export namespace Prisma {
     order_by?: boolean
     selected_package?: boolean
     qty?: boolean
-    is_paid?: boolean
+    status?: boolean
   }, ExtArgs["result"]["preorder"]>
 
   export type preorderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1087,7 +1087,7 @@ export namespace Prisma {
     order_by?: boolean
     selected_package?: boolean
     qty?: boolean
-    is_paid?: boolean
+    status?: boolean
   }, ExtArgs["result"]["preorder"]>
 
   export type preorderSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1096,7 +1096,7 @@ export namespace Prisma {
     order_by?: boolean
     selected_package?: boolean
     qty?: boolean
-    is_paid?: boolean
+    status?: boolean
   }, ExtArgs["result"]["preorder"]>
 
   export type preorderSelectScalar = {
@@ -1105,10 +1105,10 @@ export namespace Prisma {
     order_by?: boolean
     selected_package?: boolean
     qty?: boolean
-    is_paid?: boolean
+    status?: boolean
   }
 
-  export type preorderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "order_date" | "order_by" | "selected_package" | "qty" | "is_paid", ExtArgs["result"]["preorder"]>
+  export type preorderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "order_date" | "order_by" | "selected_package" | "qty" | "status", ExtArgs["result"]["preorder"]>
 
   export type $preorderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "preorder"
@@ -1119,7 +1119,7 @@ export namespace Prisma {
       order_by: string
       selected_package: string
       qty: number
-      is_paid: boolean
+      status: boolean
     }, ExtArgs["result"]["preorder"]>
     composites: {}
   }
@@ -1548,7 +1548,7 @@ export namespace Prisma {
     readonly order_by: FieldRef<"preorder", 'String'>
     readonly selected_package: FieldRef<"preorder", 'String'>
     readonly qty: FieldRef<"preorder", 'Int'>
-    readonly is_paid: FieldRef<"preorder", 'Boolean'>
+    readonly status: FieldRef<"preorder", 'Boolean'>
   }
     
 
@@ -1930,7 +1930,7 @@ export namespace Prisma {
     order_by: 'order_by',
     selected_package: 'selected_package',
     qty: 'qty',
-    is_paid: 'is_paid'
+    status: 'status'
   };
 
   export type PreorderScalarFieldEnum = (typeof PreorderScalarFieldEnum)[keyof typeof PreorderScalarFieldEnum]
@@ -1996,7 +1996,7 @@ export namespace Prisma {
     order_by?: StringFilter<"preorder"> | string
     selected_package?: StringFilter<"preorder"> | string
     qty?: IntFilter<"preorder"> | number
-    is_paid?: BoolFilter<"preorder"> | boolean
+    status?: BoolFilter<"preorder"> | boolean
   }
 
   export type preorderOrderByWithRelationInput = {
@@ -2005,7 +2005,7 @@ export namespace Prisma {
     order_by?: SortOrder
     selected_package?: SortOrder
     qty?: SortOrder
-    is_paid?: SortOrder
+    status?: SortOrder
   }
 
   export type preorderWhereUniqueInput = Prisma.AtLeast<{
@@ -2017,7 +2017,7 @@ export namespace Prisma {
     order_by?: StringFilter<"preorder"> | string
     selected_package?: StringFilter<"preorder"> | string
     qty?: IntFilter<"preorder"> | number
-    is_paid?: BoolFilter<"preorder"> | boolean
+    status?: BoolFilter<"preorder"> | boolean
   }, "id">
 
   export type preorderOrderByWithAggregationInput = {
@@ -2026,7 +2026,7 @@ export namespace Prisma {
     order_by?: SortOrder
     selected_package?: SortOrder
     qty?: SortOrder
-    is_paid?: SortOrder
+    status?: SortOrder
     _count?: preorderCountOrderByAggregateInput
     _avg?: preorderAvgOrderByAggregateInput
     _max?: preorderMaxOrderByAggregateInput
@@ -2043,7 +2043,7 @@ export namespace Prisma {
     order_by?: StringWithAggregatesFilter<"preorder"> | string
     selected_package?: StringWithAggregatesFilter<"preorder"> | string
     qty?: IntWithAggregatesFilter<"preorder"> | number
-    is_paid?: BoolWithAggregatesFilter<"preorder"> | boolean
+    status?: BoolWithAggregatesFilter<"preorder"> | boolean
   }
 
   export type preorderCreateInput = {
@@ -2051,7 +2051,7 @@ export namespace Prisma {
     order_by: string
     selected_package: string
     qty: number
-    is_paid: boolean
+    status: boolean
   }
 
   export type preorderUncheckedCreateInput = {
@@ -2060,7 +2060,7 @@ export namespace Prisma {
     order_by: string
     selected_package: string
     qty: number
-    is_paid: boolean
+    status: boolean
   }
 
   export type preorderUpdateInput = {
@@ -2068,7 +2068,7 @@ export namespace Prisma {
     order_by?: StringFieldUpdateOperationsInput | string
     selected_package?: StringFieldUpdateOperationsInput | string
     qty?: IntFieldUpdateOperationsInput | number
-    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    status?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type preorderUncheckedUpdateInput = {
@@ -2077,7 +2077,7 @@ export namespace Prisma {
     order_by?: StringFieldUpdateOperationsInput | string
     selected_package?: StringFieldUpdateOperationsInput | string
     qty?: IntFieldUpdateOperationsInput | number
-    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    status?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type preorderCreateManyInput = {
@@ -2086,7 +2086,7 @@ export namespace Prisma {
     order_by: string
     selected_package: string
     qty: number
-    is_paid: boolean
+    status: boolean
   }
 
   export type preorderUpdateManyMutationInput = {
@@ -2094,7 +2094,7 @@ export namespace Prisma {
     order_by?: StringFieldUpdateOperationsInput | string
     selected_package?: StringFieldUpdateOperationsInput | string
     qty?: IntFieldUpdateOperationsInput | number
-    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    status?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type preorderUncheckedUpdateManyInput = {
@@ -2103,7 +2103,7 @@ export namespace Prisma {
     order_by?: StringFieldUpdateOperationsInput | string
     selected_package?: StringFieldUpdateOperationsInput | string
     qty?: IntFieldUpdateOperationsInput | number
-    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    status?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2153,7 +2153,7 @@ export namespace Prisma {
     order_by?: SortOrder
     selected_package?: SortOrder
     qty?: SortOrder
-    is_paid?: SortOrder
+    status?: SortOrder
   }
 
   export type preorderAvgOrderByAggregateInput = {
@@ -2167,7 +2167,7 @@ export namespace Prisma {
     order_by?: SortOrder
     selected_package?: SortOrder
     qty?: SortOrder
-    is_paid?: SortOrder
+    status?: SortOrder
   }
 
   export type preorderMinOrderByAggregateInput = {
@@ -2176,7 +2176,7 @@ export namespace Prisma {
     order_by?: SortOrder
     selected_package?: SortOrder
     qty?: SortOrder
-    is_paid?: SortOrder
+    status?: SortOrder
   }
 
   export type preorderSumOrderByAggregateInput = {

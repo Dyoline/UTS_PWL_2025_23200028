@@ -3,7 +3,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -17,5 +16,5 @@ model preorder {
   order_by  String
   selected_package  String
   qty Int
-  is_paid Boolean
+  status Boolean
 }

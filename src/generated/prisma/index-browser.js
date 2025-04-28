@@ -120,7 +120,7 @@ exports.Prisma.PreorderScalarFieldEnum = {
   order_by: 'order_by',
   selected_package: 'selected_package',
   qty: 'qty',
-  is_paid: 'is_paid'
+  status: 'status'
 };
 
 exports.Prisma.SortOrder = {
