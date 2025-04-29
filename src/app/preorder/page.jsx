@@ -175,7 +175,7 @@ export default function PreorderPage() {
                         {preorders.map((item, index) => (
                             <tr key={item.id}>
                                 <td>{index + 1}</td>
-                                <td>{item.order_date}</td>
+                                <td>{new Date(item.order_date).toISOString().split('T')[0]}</td>
                                 <td>{item.order_by}</td>
                                 <td>{item.selected_package}</td>
                                 <td>{item.qty}</td>

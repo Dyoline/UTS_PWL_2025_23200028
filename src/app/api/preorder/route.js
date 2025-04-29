@@ -46,7 +46,7 @@ export async function PUT(request) {
 export async function DELETE(request) {
     const { id } = await request.json();
     if (!id)
-        return Response.json({ error: 'ID tidak ditemukan' }, { status: 400 });
+        return new Response.json({ error: 'ID tidak ditemukan' }, { status: 400 });
     await prisma.preorder.delete({ where: { id } });
-    return Response.json({ message: 'Berhasil dihapus' });
+    return new Response.json({ message: 'Berhasil dihapus' });
 }
