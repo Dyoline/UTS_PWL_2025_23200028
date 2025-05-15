@@ -44,9 +44,28 @@ export async function PUT(request) {
 }
 
 export async function DELETE(request) {
-    const { id } = await request.json();
-    if (!id)
-        return new Response.json({ error: 'ID tidak ditemukan' }, { status: 400 });
-    await prisma.preorder.delete({ where: { id } });
-    return new Response.json({ message: 'Berhasil dihapus' });
+    try {
+        const { id } = await request.json();
+
+        if (!id) {
+            return new Response(JSON.stringify({ error: 'ID tidak ditemukan' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
+        await prisma.preorder.delete({ where: { id } });
+
+        return new Response(JSON.stringify({ message: 'Berhasil dihapus' }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+    } catch (error) {
+        console.error('DELETE Error:', error);
+        return new Response(JSON.stringify({ error: 'Server error' }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
 }
