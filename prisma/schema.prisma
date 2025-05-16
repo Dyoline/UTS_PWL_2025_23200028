@@ -19,3 +19,10 @@ model preorder {
   qty              Int
   status           Boolean
 }
+
+model paket {
+  id             Int      @id @default(autoincrement())
+  kode           String
+  nama           String
+  deskripsi      String
+}
