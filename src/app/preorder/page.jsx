@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 export default function PreorderPage() {
     const [formVisible, setFormVisible] = useState(false);
     const [preorders, setPreorders] = useState([]);
+    const [pakets, setPakets] = useState([]);
+    const [customers, setCustomers] = useState([]);
     const [order_date, setOrderDate] = useState('');
     const [order_by, setOrderBy] = useState('');
     const [selected_package, setSelectedPackage] = useState('');
@@ -18,8 +20,20 @@ export default function PreorderPage() {
         const data = await res.json();
         setPreorders(data);
     };
+    const fetchPakets = async () => {
+        const res = await fetch('api/paket');
+        const data = await res.json();
+        setPakets(data);
+    }
+    const fetchCustomers = async () => {
+        const res = await fetch('api/customer');
+        const data = await res.json();
+        setCustomers(data);
+    }
     useEffect(() => {
         fetchPreorders();
+        fetchPakets();
+        fetchCustomers();
     }, []);
 
     const handleSubmit = async (e) => {
@@ -97,28 +111,47 @@ export default function PreorderPage() {
                             />
                         </div>
                         <div className={styles.formGroup}>
-                            <span>Nama Pemesan</span>
-                            <input
-                                type='text'
+                            <span>Customer ID</span>
+                            <select
                                 value={order_by}
-                                onChange={(e) => setOrderBy(e.target.value)}
-                                placeholder='Masukkan Nama Pemesan'
+                                onChange={(e) => {
+                                    const selectedId = e.target.value;
+                                    setOrderBy(selectedId);
+
+                                    const selectedCustomer = customers.find(c => c.id === selectedId);
+                                    if (selectedCustomer && selectedCustomer.createdat) {
+                                        const createdDate = new Date(selectedCustomer.createdat);
+                                        setOrderDate(createdDate.toISOString().split('T')[0]);
+                                    }
+                                }}
                                 required
-                            />
+                            >
+                                <option value="">Pilih Customer ID</option>
+                                {customers.map((item) => (
+                                    <option key={item.id} value={item.id}>
+                                        {item.id} - {item.nama}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                         <div className={styles.formGroup}>
                             <span>Paket</span>
                             <select
                                 value={selected_package}
-                                onChange={(e) => setSelectedPackage(e.target.value)}
+                                onChange={(e) => {
+                                    const selectedId = e.target.value;
+                                    setSelectedPackage(selectedId);
+
+                                    const selectedPackage = pakets.find(c => c.id === selectedId);
+                                }}
                                 required
                             >
-                                <option value=''>Pilih Paket</option>
-                                <option value='Paket 1'>Paket 1</option>
-                                <option value='Paket 2'>Paket 2</option>
-                                <option value='Paket 3'>Paket 3</option>
-                                <option value='Paket 4'>Paket 4</option>
-                                <option value='Paket 5'>Paket 5</option>
+                                <option value="">Pilih Paket ID</option>
+                                {pakets.map((item) => (
+                                    <option key={item.id} value={item.id}>
+                                        {item.id} - {item.nama}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                         <div className={styles.formGroup}>
@@ -164,8 +197,8 @@ export default function PreorderPage() {
                         <tr>
                             <th>No</th>
                             <th>Tanggal Pesanan</th>
-                            <th>Nama Pemesan</th>
-                            <th>Paket</th>
+                            <th>Customer ID</th>
+                            <th>Paket ID</th>
                             <th>Jumlah</th>
                             <th>Status</th>
                             <th>Aksi</th>

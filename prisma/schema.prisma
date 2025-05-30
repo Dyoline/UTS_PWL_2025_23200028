@@ -21,8 +21,16 @@ model preorder {
 }
 
 model paket {
-  id             Int      @id @default(autoincrement())
-  kode           String
-  nama           String
-  deskripsi      String
+  id        Int    @id @default(autoincrement())
+  kode      String @unique
+  nama      String
+  deskripsi String
+}
+
+model customer {
+  id        Int      @id @default(autoincrement())
+  nama      String
+  phone     String
+  email     String
+  createdat DateTime @default(now())
 }
